@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traffic Light</title>
+    <style>
+      body {
+        background-color: rgba(191, 157, 254, 0.809);
+      }
+      .container {
+        border: 1px solid transparent;
+        width: 50vw;
+        height: 80vh;
+        margin: auto;
+        text-align: center;
+      }
+      #tittle {
+        text-transform: uppercase;
+        font-weight: 400;
+      }
+      #lights {
+        border: 1px solid transparent;
+        width: 6vw;
+        background-color: black;
+        border-radius: 20px;
+        padding: 10px;
+        margin: auto;
+      }
+      #red {
+        border: 1px solid transparent;
+        width: 5vw;
+        height: 9vh;
+        border-radius: 100%;
+        margin: auto;
+        background-color: white;
+      }
+      #orange {
+        border: 1px solid transparent;
+        width: 5vw;
+        height: 9vh;
+        border-radius: 100%;
+        margin: auto;
+        background-color: white;
+      }
+      #green {
+        border: 1px solid transparent;
+        width: 5vw;
+        height: 9vh;
+        border-radius: 100%;
+        margin: auto;
+        background-color: white;
+      }
+      #piller {
+        border: 1px solid transparent;
+        width: 2vw;
+        height: 35vh;
+        background-color: black;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="tittle">traffic light</h1>
+      <div id="lights">
+        <div id="red"></div>
+        <div id="orange"></div>
+        <div id="green"></div>
+      </div>
+      <div id="piller"></div>
+    </div>
+    <script>
+      let red = document.querySelector("#red");
+      let orange = document.querySelector("#orange");
+      let green = document.querySelector("#green");
+      const arr = [
+        {
+          color: "red",
+          id: red,
+        },
+        {
+          color: "orange",
+          id: orange,
+        },
+        {
+          color: "green",
+          id: green,
+        },
+      ];
+      init(0);
+      function setColor(i) {
+        const timer = setTimeout(function () {
+          for (let j = 0; j < arr.length; j++) {
+            arr[j].id.style.backgroundColor = "white";
+          }
+          arr[i].id.style.backgroundColor = arr[i].color;
+          if (i == 2) {
+            const timer2 = setTimeout(function () {
+              init(0);
+              clearTimeout(timer2);
+            }, 2000);
+          }
+          clearTimeout(timer);
+        }, i * 2000);
+      }
+
+      function init(i) {
+        while (i < 3) {
+          setColor(i);
+          i++;
+        }
+      }
+    </script>
+  </body>
+</html>
